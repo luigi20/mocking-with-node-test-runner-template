@@ -26,7 +26,7 @@ export default class TodoService {
     }
 
     async list(query) {
-        return (await this.#todoRepository.list())
-            .map(({ text, ...result }) => ({ text: text.toUpperCase(), ...result }))
+        const result =  (await this.#todoRepository.list())
+        return  result.map(({ text, ...result }) => ({ text: text.toUpperCase(), ...result }))
     }
 }
