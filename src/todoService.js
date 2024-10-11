@@ -1,3 +1,4 @@
+import Todo from "./todo.js";
 export default class TodoService {
     #todoRepository
 
@@ -22,11 +23,11 @@ export default class TodoService {
             status: when > today ? 'pending' : 'late'
         }
 
-        return this.#todoRepository.create(todo)
+      return  this.#todoRepository.create(todo)
     }
 
     async list(query) {
         const result =  (await this.#todoRepository.list())
-        return  result.map(({ text, ...result }) => ({ text: text.toUpperCase(), ...result }))
+        return  result.map(({ text, ...result }) => (new Todo({ text: text.toUpperCase(), ...result })))
     }
 }
